@@ -22,7 +22,7 @@ st.write(
 
 # Ask the user for their OpenAI API key
 openai_api_key = st.text_input("OpenAI API Key", type="password")
-model_choice = st.selectbox("Choose the GPT model:", options=["gpt-4", "gpt-3.5"])
+model_choice = st.selectbox("Choose the GPT model:", options=["gpt-4", "gpt-3.5-turbo"])
 
 if not openai_api_key:
     st.info("Please add your OpenAI API key to continue.", icon="🗝️")
@@ -56,10 +56,10 @@ else:
             f"Description: {image_description}\n\nEmotion:"
         )
 
-        # Generate an emotion prediction using the new OpenAI Chat API
+        # Generate an emotion prediction using the OpenAI Chat API
         with st.spinner("Analyzing emotion..."):
             try:
-                response = openai.Chat.create(
+                response = openai.ChatCompletion.create(
                     model=model_choice,
                     messages=[{"role": "user", "content": prompt}],
                     max_tokens=10,
