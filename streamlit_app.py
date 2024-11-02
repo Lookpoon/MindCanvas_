@@ -59,7 +59,7 @@ else:
         # Generate an emotion prediction using the OpenAI Chat API
         with st.spinner("Analyzing emotion..."):
             try:
-                response = openai.ChatCompletion.create(
+                response = openai.chat.completions.create(
                     model=model_choice,
                     messages=[{"role": "user", "content": prompt}],
                     max_tokens=10,
