@@ -56,10 +56,10 @@ else:
             f"Description: {image_description}\n\nEmotion:"
         )
 
-        # Generate an emotion prediction using the selected GPT model
+        # Generate an emotion prediction using the new OpenAI Chat API
         with st.spinner("Analyzing emotion..."):
             try:
-                response = openai.ChatCompletion.create(
+                response = openai.Chat.create(
                     model=model_choice,
                     messages=[{"role": "user", "content": prompt}],
                     max_tokens=10,
